@@ -1,16 +1,34 @@
+var x=95, y=50
+
+function drawCircle(x,y) {
+  // Draw first frame
+  var c = document.getElementById('animation')
+
+  if (c) {
+    var ctx = c.getContext('2d')
+
+    ctx.beginPath();
+    ctx.arc(x,y,40,0,2*Math.PI)
+    ctx.stroke()
+  } else {
+    console.log('false')
+  }
+}
+
 function init() {
-    // Draw first frame
-    var c = document.getElementById('animation');
+  drawCircle(94,50)
+}
 
-    if (c) {
-        var ctx = c.getContext('2d');
-
-        ctx.beginPath();
-        ctx.arc(95,50,40,0,2*Math.PI);
-        ctx.stroke();
-    }
+var update = function update() {
+  x++
+  y++
+  console.log('x: ' + x)
+  console.log('y: ' + y)
+  drawCircle(x,y)
 }
 
 document.addEventListener("DOMContentLoaded", function(event) {
-   init();
+  init()
+
+  setInterval(update,35/1000)
 });
